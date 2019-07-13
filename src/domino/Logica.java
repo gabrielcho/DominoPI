@@ -1,5 +1,10 @@
 package domino;
 
 public class Logica {
-"e"
+    Interfaz interfaz;
+
+    public Logica() {
+        interfaz = new Interfaz();
+
+    }
 }
