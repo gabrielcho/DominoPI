@@ -1,8 +1,12 @@
 package domino;
 
+import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -21,18 +25,25 @@ public class Interfaz extends JFrame {
         JPanel panel = new JPanel();
         Toolkit herramientas = Toolkit.getDefaultToolkit();
 
-        JButton boton = new JButton("BipBip");
+        Image imagen = herramientas.getImage("06.png");
+        imagen = imagen.getScaledInstance(35, 85, Image.SCALE_SMOOTH);
+        ImageIcon imagenboton = new ImageIcon(imagen);
+        JButton boton = new JButton("");
         boton.addActionListener(new ActionListener() {
-
+        Image awtimage =imagenboton.getImage();
             @Override
             public void actionPerformed(ActionEvent e) {
                 herramientas.beep();
             }
         });
+        boton.setBorder(BorderFactory.createEmptyBorder());
 
-        boton.setBounds(50, 50, 50, 50);
+        boton.setIcon(imagenboton);
+
+        boton.setBounds(35, 85, 35, 85);
 
         getContentPane().add(panel);
+        setIconImage(imagen);
         panel.setLayout(null);
         panel.add(boton);
         setVisible(true);
