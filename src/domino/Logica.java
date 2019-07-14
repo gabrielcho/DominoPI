@@ -1,10 +1,11 @@
 package domino;
 
+/** Lleva toda la lógica de juego como fases, flujo o juego */
 public class Logica {
-    Interfaz interfaz;
+
 
     public Logica() {
-        interfaz = new Interfaz();
+      new Interfaz();
 
     }
 }
