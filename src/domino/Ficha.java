@@ -6,4 +6,10 @@ package domino;
  */
 public class Ficha {
 
+    public Ficha(int a, int b) {
+        int ladoA = a;
+        int ladoB = b;
+    }
+
+    
 }

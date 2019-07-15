@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
+import javax.swing.JFrame; 
 import javax.swing.JPanel;
 
 /**
@@ -18,19 +18,16 @@ import javax.swing.JPanel;
 public class Interfaz extends JFrame {
     public Interfaz() {
 
-        setTitle("Yeahh primera ventana Swing");
-        setSize(800, 600);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+        setVentana();
+        
         JPanel panel = new JPanel();
         Toolkit herramientas = Toolkit.getDefaultToolkit();
-
+        
         Image imagen = herramientas.getImage("06.png");
         imagen = imagen.getScaledInstance(35, 85, Image.SCALE_SMOOTH);
         ImageIcon imagenboton = new ImageIcon(imagen);
-        JButton boton = new JButton("");
+        JButton boton = new JButton("");        
         boton.addActionListener(new ActionListener() {
-        Image awtimage =imagenboton.getImage();
             @Override
             public void actionPerformed(ActionEvent e) {
                 herramientas.beep();
@@ -49,4 +46,12 @@ public class Interfaz extends JFrame {
         setVisible(true);
 
     }
+
+    public void setVentana() {
+        setTitle("Yeahh primera ventana Swing");
+        setSize(800, 600);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+    }
+
 }
