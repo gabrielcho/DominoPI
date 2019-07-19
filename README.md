@@ -1,6 +1,9 @@
 ## Dominó Programación interactiva
 Este es el git que se crea para el proyecto de dominó de programación interactiva.
 
+#### Bitácora:
+19/07/19: Se construyó parcialmente la clase ficha y la clase Pila.
+
 ##### Requerimientos:
 1. Debe tener interfaz gráfica
 2. Las fichas deben ser arrastradas al tablero y después acomodadas, se debe comprobar si una ficha se puede poner o no
@@ -18,3 +21,9 @@ Este es el git que se crea para el proyecto de dominó de programación interact
     Cuando un jugador haya puesto todas sus fichas en el tablero, se dice que este es ganador.
 - #### Fase 4
     Se descuenta o agrega dinero al balance del jugador, dependiendo si perdió o ganó.
+
+#### Planteamiento de Clases
+- #### Ficha:
+    Se crea una clase ficha con el fin de que al llamar al constructor se le asignen dos valores, el del lado A y el Lado B, también se le debería asignar una imagen para facilitar la graficación en la clase de interfaz.
+
+

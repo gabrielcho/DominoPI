@@ -16,4 +16,5 @@ public class Mano {
     public Mano() {
         mano = new Vector<Ficha>();
     }
+
 }
