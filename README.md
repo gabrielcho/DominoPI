@@ -1,8 +1,8 @@
 ## Dominó Programación interactiva
 Este es el git que se crea para el proyecto de dominó de programación interactiva.
 
-#### Bitácora:
-19/07/19: Se construyó parcialmente la clase ficha y la clase Pila.
+##### Bitácora:
+19/07/19: Se construyó parcialmente la clase ficha y la clase Pila, donde a esta última se le agregaron ya todas las fichas y la posibilidad de aleatorizar las fichas contenidas en un array, adicionalmente se creó un método para obtener fácilmente la imagen de un objeto Ficha.
 
 ##### Requerimientos:
 1. Debe tener interfaz gráfica
