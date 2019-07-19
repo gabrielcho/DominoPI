@@ -8,6 +8,9 @@ import java.util.Random;
  * y aleatorizar su ordenamiento.
  */
 public class Pila {
+    private int fichasRobadas;
+
+    /** Es la matriz que contiene los objetos de ficha usados en el juego */
     private Ficha[] pilaFichas = {
 
             new Ficha(0, 0), new Ficha(1, 1), new Ficha(2, 2), new Ficha(3, 3), new Ficha(4, 4), new Ficha(5, 5),
@@ -17,8 +20,10 @@ public class Pila {
             new Ficha(0, 5), new Ficha(1, 6), new Ficha(0, 6), new Ficha(6, 6) };
 
     public Pila() {
+        fichasRobadas = 0;
         aleatorizar(pilaFichas);
         for (int i = 0; i < 28; i++) {
+            System.out.println("Ficha num: " + i);
             System.out.println("Lado A: " + pilaFichas[i].getLadoA());
             System.out.println("Lado B: " + pilaFichas[i].getLadoB());
         }
@@ -26,6 +31,7 @@ public class Pila {
 
     }
 
+    /** Método usado para aleatorizar nuestro array de fichas */
     public static Ficha[] aleatorizar(Ficha[] array) { //Tomado de ProgramCreek.com
         Random rgen = new Random(); // Random number generator			
 
@@ -38,4 +44,14 @@ public class Pila {
 
         return array;
     }
+
+    /** Función getter de fichas usada para pasar fichas a los jugadores o sólo sacar una ficha de la pila 
+     * @return Objeto ficha tomado de la pila.
+    */
+    public Ficha sacarFicha() {
+        Ficha fichasacada = pilaFichas[27 - fichasRobadas];
+        fichasRobadas++;
+        return fichasacada;
+    }
+
 }

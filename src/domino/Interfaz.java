@@ -1,5 +1,7 @@
 package domino;
 
+import java.awt.Dimension;
+import java.awt.BorderLayout;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -19,35 +21,43 @@ import javax.swing.JPanel;
 public class Interfaz extends JFrame {
     private int largoficha = 35;
     private int altoficha = 85;
+    private JPanel centro;
+    private Dimension tamañoFicha = new Dimension(35, 85);
 
     public Interfaz() {
 
         setVentana();
 
-        JPanel panel = new JPanel();
+        JPanel panel = new JPanel(new BorderLayout());
         Toolkit herramientas = Toolkit.getDefaultToolkit();
 
         Image imagen = herramientas.getImage("06.png");
         imagen = imagen.getScaledInstance(largoficha, altoficha, Image.SCALE_SMOOTH);
         ImageIcon imagenboton = new ImageIcon(imagen);
-        JButton boton = new JButton("");
-        boton.addActionListener(new ActionListener() {
+        JButton boton = new JButton();
+        JButton boton1 = new JButton();
+        /* boton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 herramientas.beep();
             }
-        });
-
+        }); */
+        ////
+        centro = new JPanel();
+        ////
+        boton1.setBorder(BorderFactory.createEmptyBorder());
         boton.setBorder(BorderFactory.createEmptyBorder());
 
-        boton.setIcon(graficarFicha(new Ficha(0, 0)));
+        boton1.setIcon(imagenFicha(new Ficha(3, 3)));
+        boton.setIcon(imagenFicha(new Ficha(5, 5)));
 
-        boton.setBounds(35, 85, 35, 85);
-
+        boton.setPreferredSize(new Dimension(35, 85));
+        boton1.setPreferredSize(new Dimension(35, 85));
         getContentPane().add(panel);
         setIconImage(imagen);
-        panel.setLayout(null); // yeah dale potosi
-        panel.add(boton);
+        panel.add(centro, BorderLayout.SOUTH);
+        centro.add(boton);
+        centro.add(boton1);
         setVisible(true);
 
     }
@@ -59,7 +69,14 @@ public class Interfaz extends JFrame {
 
     }
 
-    public ImageIcon graficarFicha(Ficha ficha) {
+    public JButton crearComponenteFicha(Ficha ficha) {
+        JButton botonficha = new JButton();
+        botonficha.setIcon(imagenFicha(ficha));
+        botonficha.setPreferredSize(new Dimension(35, 85));
+        return botonficha;
+    }
+
+    public ImageIcon imagenFicha(Ficha ficha) {
         Toolkit toolImagen = Toolkit.getDefaultToolkit();
         String pathficha = Integer.toString(ficha.getLadoA()) + Integer.toString(ficha.getLadoB()) + ".png"; //guarda un string que corresponde al nombre de archivo de la ficha ingresada
         Image sourceficha = toolImagen.getImage(pathficha); //Crea un objeto Image que obtiene la imagen correspondiente a la ficha
@@ -68,4 +85,12 @@ public class Interfaz extends JFrame {
         return imagenficha;
     }
 
+    public void graficarMano(Jugador jugador) {
+        for (int i = 0; i < jugador.mano.manoSize(); i++) {
+            JButton fichaComponente = crearComponenteFicha(jugador.mano.verFicha(i));
+            centro.add(fichaComponente);
+            setVisible(true);
+        }
+    }
+    // centro.add(new Jbutton)
 }

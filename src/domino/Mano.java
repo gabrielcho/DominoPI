@@ -17,4 +17,17 @@ public class Mano {
         mano = new Vector<Ficha>();
     }
 
+    public void agregarFicha(Ficha ficha) {
+        mano.add(ficha);
+    }
+
+    public Ficha verFicha(int index) {
+        return mano.get(index);
+
+    }
+
+    public int manoSize() {
+        return mano.size();
+    }
+
 }
