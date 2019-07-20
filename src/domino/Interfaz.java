@@ -1,12 +1,13 @@
 package domino;
 
+import java.awt.*;
 import java.awt.Dimension;
 import java.awt.BorderLayout;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import java.awt.color.*;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -21,21 +22,23 @@ import javax.swing.JPanel;
 public class Interfaz extends JFrame {
     private int largoficha = 35;
     private int altoficha = 85;
-    private JPanel centro;
+    private JPanel areamano;
+
     private Dimension tamañoFicha = new Dimension(35, 85);
 
     public Interfaz() {
 
         setVentana();
+        setEntorno();
 
+    }
+
+    public void setEntorno() {
         JPanel panel = new JPanel(new BorderLayout());
         Toolkit herramientas = Toolkit.getDefaultToolkit();
 
         Image imagen = herramientas.getImage("06.png");
         imagen = imagen.getScaledInstance(largoficha, altoficha, Image.SCALE_SMOOTH);
-        ImageIcon imagenboton = new ImageIcon(imagen);
-        JButton boton = new JButton();
-        JButton boton1 = new JButton();
         /* boton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -43,21 +46,12 @@ public class Interfaz extends JFrame {
             }
         }); */
         ////
-        centro = new JPanel();
-        ////
-        boton1.setBorder(BorderFactory.createEmptyBorder());
-        boton.setBorder(BorderFactory.createEmptyBorder());
-
-        boton1.setIcon(imagenFicha(new Ficha(3, 3)));
-        boton.setIcon(imagenFicha(new Ficha(5, 5)));
-
-        boton.setPreferredSize(new Dimension(35, 85));
-        boton1.setPreferredSize(new Dimension(35, 85));
+        areamano = new JPanel();
+        areamano.setBackground(new Color(34, 82, 30));
+        panel.setBackground(new Color(34, 82, 30));
         getContentPane().add(panel);
         setIconImage(imagen);
-        panel.add(centro, BorderLayout.SOUTH);
-        centro.add(boton);
-        centro.add(boton1);
+        panel.add(areamano, BorderLayout.SOUTH);
         setVisible(true);
 
     }
@@ -65,6 +59,7 @@ public class Interfaz extends JFrame {
     public void setVentana() {
         setTitle("Yeahh primera ventana Swing");
         setSize(800, 600);
+
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     }
@@ -72,7 +67,8 @@ public class Interfaz extends JFrame {
     public JButton crearComponenteFicha(Ficha ficha) {
         JButton botonficha = new JButton();
         botonficha.setIcon(imagenFicha(ficha));
-        botonficha.setPreferredSize(new Dimension(35, 85));
+        botonficha.setPreferredSize(tamañoFicha);
+        botonficha.setBorder(BorderFactory.createEmptyBorder());
         return botonficha;
     }
 
@@ -88,9 +84,9 @@ public class Interfaz extends JFrame {
     public void graficarMano(Jugador jugador) {
         for (int i = 0; i < jugador.mano.manoSize(); i++) {
             JButton fichaComponente = crearComponenteFicha(jugador.mano.verFicha(i));
-            centro.add(fichaComponente);
+            areamano.add(fichaComponente);
             setVisible(true);
+
         }
     }
-    // centro.add(new Jbutton)
 }

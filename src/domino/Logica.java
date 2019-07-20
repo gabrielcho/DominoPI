@@ -10,10 +10,11 @@ public class Logica {
 
   /** Constructor que inicia el juego */
   public Logica() {
+    pila = new Pila();
     interfaz = new Interfaz();
     humano = new Jugador();
-
-    //interfaz.graficarMano(humano);
-
+    for (int i = 0; i < 7; i++)
+      humano.tomarFicha(pila.sacarFicha());
+    interfaz.graficarMano(humano);
   }
 }

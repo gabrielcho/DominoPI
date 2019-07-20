@@ -50,6 +50,7 @@ public class Pila {
     */
     public Ficha sacarFicha() {
         Ficha fichasacada = pilaFichas[27 - fichasRobadas];
+        System.out.println(pilaFichas[27 - fichasRobadas].getLadoA());
         fichasRobadas++;
         return fichasacada;
     }
