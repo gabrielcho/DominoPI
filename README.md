@@ -4,7 +4,8 @@ Este es el git que se crea para el proyecto de dominó de programación interact
 ##### Bitácora:
 18/07/19: Se construyó parcialmente la clase ficha y la clase Pila, donde a esta última se le agregaron ya todas las fichas y la posibilidad de aleatorizar las fichas contenidas en un array, adicionalmente se creó un método para obtener fácilmente la imagen de un objeto Ficha.
 
-19/07/19: 
+19/07/19: Se logró setear un layout apropiado para la estructura del juego, se implementaron demasiados métodos que ayudan tanto a la lógica del juego como a la graficación en sí, la principal dificultad encontrada hasta ahora es la de graficar el tablero de juego (que es donde se ponen las fichas) y también organizar la lógica del tablero de juego de modo que las fichas queden pegadas con el número que les corresponde, hay especial dificultad más que todo en la parte donde no sé cómo hacer que, por ejemplo, al momento de comprobar si una ficha se puede jugar o no, sólo compruebe la parte que está en la cola o la cabeza de las jugadas, sobre todo en el hecho de que tendría que intercambiar los lados de las fichas para poder situar las fichas jugadas de manera organizada pero esta acción me generaría problemas al momento de graficarlas por la cuestión de las imágenes y su asignación por lados de la ficha.
+Se me ocurre una idea y es generar las imágenes de las fichas al momento de crear una nueva ficha, de esa manera, si intercambiamos los lados no habría problema en graficar las fichas (que es el mayor impedimento) Por ahora me voy a dormir, estoy cansado... 
 
 ##### Requerimientos:
 1. Debe tener interfaz gráfica

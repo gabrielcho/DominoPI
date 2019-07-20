@@ -1,12 +1,14 @@
 
+import Java
 package domino;
 
 /** Lleva toda la lógica de juego como fases, flujo o juego */
 public class Logica {
-  Pila pila;
-  Jugador humano;
-  Jugador computador;
-  Interfaz interfaz;
+  private Pila pila;
+  private Jugador humano;
+  private Jugador computador;
+  private Interfaz interfaz;
+  private Vector<Ficha> mesa;
 
   /** Constructor que inicia el juego */
   public Logica() {

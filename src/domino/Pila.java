@@ -19,6 +19,9 @@ public class Pila {
             new Ficha(1, 4), new Ficha(2, 5), new Ficha(3, 6), new Ficha(0, 4), new Ficha(1, 5), new Ficha(2, 6),
             new Ficha(0, 5), new Ficha(1, 6), new Ficha(0, 6), new Ficha(6, 6) };
 
+    /** El constructor de un objeto Pila, este constructor nos aleatoriza las fichas contenidas en la pila para darle 
+     * realismo al juego
+     */
     public Pila() {
         fichasRobadas = 0;
         aleatorizar(pilaFichas);
@@ -31,7 +34,9 @@ public class Pila {
 
     }
 
-    /** Método usado para aleatorizar nuestro array de fichas */
+    /** Método usado para aleatorizar nuestro array de fichas 
+     * @return Un array organizado.
+    */
     public static Ficha[] aleatorizar(Ficha[] array) { //Tomado de ProgramCreek.com
         Random rgen = new Random(); // Random number generator			
 

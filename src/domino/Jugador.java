@@ -5,6 +5,7 @@ public class Jugador {
     Mano mano;
 
     public Jugador() {
+        dinero = 0;
         mano = new Mano();
 
     }
