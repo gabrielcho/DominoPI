@@ -1,6 +1,7 @@
 
-import Java
 package domino;
+
+import java.util.Vector;
 
 /** Lleva toda la lógica de juego como fases, flujo o juego */
 public class Logica {

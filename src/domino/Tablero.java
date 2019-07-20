@@ -10,7 +10,7 @@ public class Tablero {
     }
 
     public boolean comprobarJugada(Ficha ficha) {
-        boolean jugadavalida = if(ficha.getLadoA()); 
+        //  boolean jugadavalida = if(ficha.getLadoA()); 
         return true;
     }
 
