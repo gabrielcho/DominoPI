@@ -93,4 +93,12 @@ public class Interfaz extends JFrame {
 
         }
     }
+
+    /** Muestra una ventana de prompt, esta función es útil para cuando otras clases quieran tirar algún prompt .
+     * Recibe un mensaje de tipo String
+    */
+
+    public static void mostrarPrompt(String mensaje) {
+
+    }
 }
