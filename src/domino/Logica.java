@@ -15,13 +15,23 @@ public class Logica {
     pila = new Pila();
     interfaz = new Interfaz();
     humano = new Jugador();
-    for (int i = 0; i < 7; i++)
-      humano.tomarFicha(pila.sacarFicha());
+    computador = new Jugador();
+    //
+
+    repartirFichas();
     interfaz.graficarMano(humano);
 
   }
 
   public static void ponerFichaEnTablero() {
 
+  }
+
+  /** Método usado para repartir las fichas a los respectivos jugadores */
+  public void repartirFichas() {
+    for (int i = 0; i < 7; i++) {
+      humano.tomarFicha(pila.sacarFicha());
+      computador.tomarFicha(pila.sacarFicha());
+    }
   }
 }

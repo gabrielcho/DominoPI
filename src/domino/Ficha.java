@@ -62,4 +62,8 @@ public class Ficha {
         return imagenficha;
     }
 
+    public int puntajeFicha() {
+        return ladoA + ladoB;
+    }
+
 }

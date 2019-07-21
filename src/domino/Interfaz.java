@@ -4,10 +4,7 @@ import java.awt.*;
 import java.io.InputStream;
 import java.io.File;
 import javax.sound.sampled.*;
-import java.awt.Dimension;
-import java.awt.BorderLayout;
-import java.awt.Image;
-import java.awt.Toolkit;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileInputStream;
@@ -62,7 +59,7 @@ public class Interfaz extends JFrame {
         setIconImage(imagen);
         panel.add(areamano, BorderLayout.SOUTH);
         setVisible(true);
-        JPanel areaTablero = new JPanel();
+        JPanel areaTablero = new JPanel(new FlowLayout(FlowLayout.CENTER, 0, 0));
         JPanel areaArriba = new JPanel();
         areaTablero.add(crearComponenteFichaRotada(new Ficha(1, 2), 1));
         areaTablero.add(crearComponenteFichaRotada(new Ficha(1, 2), 2));
@@ -83,15 +80,17 @@ public class Interfaz extends JFrame {
         botonficha.setIcon(imagenFicha(ficha));
         botonficha.setPreferredSize(tamanoFicha);
         botonficha.setBorder(BorderFactory.createEmptyBorder());
+        botonficha.setBackground(Color.BLACK);
+        botonficha.setForeground(Color.BLACK);
+
         botonficha.addActionListener(new ActionListener() {
+
             @Override
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "yeah manin");
                 areamano.remove(botonficha);
                 areamano.revalidate();
-
                 areamano.repaint();
-
+                //me hace falta que al hacerle click intente jugar la ficha en el tablero
             }
         });
         return botonficha;
@@ -136,7 +135,7 @@ public class Interfaz extends JFrame {
         if (direccion == 1) {
             imagenrotada = new RotatedIcon(ficha.getImagenFicha(), 90);
         } else if (direccion == 2) {
-            imagenrotada = new RotatedIcon(ficha.getImagenFicha(), -90);
+            imagenrotada = new RotatedIcon(ficha.getImagenFicha(), 270);
         }
         return imagenrotada;
     }
@@ -152,14 +151,14 @@ public class Interfaz extends JFrame {
         if (direccion == 1) {
             ficharotada = new JButton();
             ficharotada.setIcon(rotarIconoFicha(ficha, direccion));
-            ficharotada.setPreferredSize(new Dimension(85, 35));
+            ficharotada.setPreferredSize(new Dimension(84, 34));
             ficharotada.setBorder(BorderFactory.createEmptyBorder());
         } else if (direccion == 2) {
             ficha.rotarLados();
             ficharotada = new JButton();
 
             ficharotada.setIcon(rotarIconoFicha(ficha, direccion));
-            ficharotada.setPreferredSize(new Dimension(85, 35));
+            ficharotada.setPreferredSize(new Dimension(84, 34));
             ficharotada.setBorder(BorderFactory.createEmptyBorder());
         }
         return ficharotada;
