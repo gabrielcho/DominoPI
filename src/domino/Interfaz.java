@@ -1,13 +1,18 @@
 package domino;
 
 import java.awt.*;
+import java.io.InputStream;
+import java.io.File;
+import javax.sound.sampled.*;
 import java.awt.Dimension;
 import java.awt.BorderLayout;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileInputStream;
 import java.awt.color.*;
+import javax.swing.JOptionPane;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -29,7 +34,6 @@ public class Interfaz extends JFrame {
     public Interfaz() {
 
         setEntorno();
-
     }
 
     /** Configura el entorno inicial del juego. */
@@ -72,12 +76,24 @@ public class Interfaz extends JFrame {
 
     /** Crea el componente swing que representa la ficha que se pasa como argumento del método, en este caso el componente es un botón sin bordes
      *  que tiene asignada una imagen.
+     * Se debe poner la ficha y el objeto de tablero al que
      */
     public JButton crearComponenteMano(Ficha ficha) {
         JButton botonficha = new JButton();
         botonficha.setIcon(imagenFicha(ficha));
         botonficha.setPreferredSize(tamanoFicha);
         botonficha.setBorder(BorderFactory.createEmptyBorder());
+        botonficha.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null, "yeah manin");
+                areamano.remove(botonficha);
+                areamano.revalidate();
+
+                areamano.repaint();
+
+            }
+        });
         return botonficha;
     }
 
@@ -148,4 +164,14 @@ public class Interfaz extends JFrame {
         }
         return ficharotada;
     }
+
+    /**Reproduce la música m e l a del juego */
+    /*
+    public void musicaMela(String path) {
+        InputStream music;
+        music = new FileInputStream(new File(path));
+        AudioStream audio = new AudioStream();
+        AudioStream.player.start(audio);
+    }
+    */
 }
