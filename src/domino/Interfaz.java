@@ -24,7 +24,7 @@ public class Interfaz extends JFrame {
     private int altoficha = 85;
     private JPanel areamano;
     /** Objeto Dimension para guardar las dimensiones de la ficha */
-    private Dimension tamañoFicha = new Dimension(35, 85);
+    private Dimension tamanoFicha = new Dimension(35, 85);
 
     public Interfaz() {
 
@@ -58,16 +58,25 @@ public class Interfaz extends JFrame {
         setIconImage(imagen);
         panel.add(areamano, BorderLayout.SOUTH);
         setVisible(true);
+        JPanel areaTablero = new JPanel();
+        JPanel areaArriba = new JPanel();
+        areaTablero.add(crearComponenteFichaRotada(new Ficha(1, 2), 1));
+        areaTablero.add(crearComponenteFichaRotada(new Ficha(1, 2), 2));
+        areaArriba.add(crearComponenteFichaRotada(new Ficha(1, 2), 2));
+
+        panel.add(areaTablero, BorderLayout.CENTER);
+        panel.add(areaArriba, BorderLayout.NORTH);
+        setVisible(true);
 
     }
 
     /** Crea el componente swing que representa la ficha que se pasa como argumento del método, en este caso el componente es un botón sin bordes
      *  que tiene asignada una imagen.
      */
-    public JButton crearComponenteFicha(Ficha ficha) {
+    public JButton crearComponenteMano(Ficha ficha) {
         JButton botonficha = new JButton();
         botonficha.setIcon(imagenFicha(ficha));
-        botonficha.setPreferredSize(tamañoFicha);
+        botonficha.setPreferredSize(tamanoFicha);
         botonficha.setBorder(BorderFactory.createEmptyBorder());
         return botonficha;
     }
@@ -87,7 +96,7 @@ public class Interfaz extends JFrame {
     /** Grafica las fichas de la mano de un jugador en la zona inferior de la pantalla */
     public void graficarMano(Jugador jugador) {
         for (int i = 0; i < jugador.mano.manoSize(); i++) {
-            JButton fichaComponente = crearComponenteFicha(jugador.mano.verFicha(i));
+            JButton fichaComponente = crearComponenteMano(jugador.mano.verFicha(i));
             areamano.add(fichaComponente);
             setVisible(true);
 
@@ -100,5 +109,43 @@ public class Interfaz extends JFrame {
 
     public static void mostrarPrompt(String mensaje) {
 
+    }
+
+    /** Simplemente rota la imagen de la ficha hacia la dirección que se le indique
+     * 1 es IZQUIERDA
+     * 2 es DERECHA
+     */
+    public RotatedIcon rotarIconoFicha(Ficha ficha, int direccion) { //limpia
+        RotatedIcon imagenrotada = null;
+        if (direccion == 1) {
+            imagenrotada = new RotatedIcon(ficha.getImagenFicha(), 90);
+        } else if (direccion == 2) {
+            imagenrotada = new RotatedIcon(ficha.getImagenFicha(), -90);
+        }
+        return imagenrotada;
+    }
+
+    /** Crea un botón que tiene la ficha y una rotación específica 
+     * nuevamente: 
+     * 1 Representa IZQUIERDA
+     * 2 Representa DERECHA
+    */
+
+    public JButton crearComponenteFichaRotada(Ficha ficha, int direccion) {
+        JButton ficharotada = null;
+        if (direccion == 1) {
+            ficharotada = new JButton();
+            ficharotada.setIcon(rotarIconoFicha(ficha, direccion));
+            ficharotada.setPreferredSize(new Dimension(85, 35));
+            ficharotada.setBorder(BorderFactory.createEmptyBorder());
+        } else if (direccion == 2) {
+            ficha.rotarLados();
+            ficharotada = new JButton();
+
+            ficharotada.setIcon(rotarIconoFicha(ficha, direccion));
+            ficharotada.setPreferredSize(new Dimension(85, 35));
+            ficharotada.setBorder(BorderFactory.createEmptyBorder());
+        }
+        return ficharotada;
     }
 }
