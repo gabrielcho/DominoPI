@@ -4,7 +4,6 @@ import java.awt.*;
 import java.io.InputStream;
 import java.io.File;
 import javax.sound.sampled.*;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileInputStream;
@@ -28,6 +27,7 @@ public class Interfaz extends JFrame {
     JPanel panel;
     JPanel areaTablero = new JPanel(new FlowLayout(FlowLayout.CENTER, 0, 0));
     JPanel areaArriba = new JPanel();
+    JPanel areacomputador;
     Toolkit herramientas = Toolkit.getDefaultToolkit();
 
     /** Objeto Dimension para guardar las dimensiones de la ficha */
@@ -46,7 +46,7 @@ public class Interfaz extends JFrame {
 
         panel = new JPanel(new BorderLayout());
 
-        Image imagen = herramientas.getImage("06.png");
+        Image imagen = herramientas.getImage("src/imagesmelas/06.png");
         imagen = imagen.getScaledInstance(largoficha, altoficha, Image.SCALE_SMOOTH);
 
         areamano = new JPanel();

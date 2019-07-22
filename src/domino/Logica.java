@@ -50,26 +50,23 @@ public class Logica extends Interfaz {
     botonficha.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
-        areamano.remove(botonficha);
-        areamano.revalidate();
-        areamano.repaint();
-        humano.quitarFicha(ficha);
-        if (mesa.tableroSize() == 0)
+
+        if (mesa.tableroSize() == 0) {
+          areamano.remove(botonficha);
           primeraJugada(ficha);
-        else {
-          hacerJugada(ficha, 1 + JOptionPane.showConfirmDialog(null, "X Q lado quierej jugá?", "yeah manin",
-              JOptionPane.YES_NO_CANCEL_OPTION));
+          humano.quitarFicha(ficha);
+
+        } else {
+
+          if (hacerJugada(ficha, 1 + JOptionPane.showConfirmDialog(null, "X Q lado quierej jugá?", "yeah manin",
+              JOptionPane.YES_NO_CANCEL_OPTION))) {
+            areamano.remove(botonficha);
+            areamano.revalidate();
+            areamano.repaint();
+          }
         }
-        for (int i = 0; i < mesa.tableroSize(); i++)
-          System.out.println("El ladoA es: " + mesa.tablero.get(i).getLadoA() + " El ladoB es: "
-              + mesa.tablero.get(i).getLadoB() + " de la ficha # " + i + "\n=================================");
         dibujarTablero();
-        /* for (int i = 0; i < humano.mano.manoSize(); i++) {
-          if (i == 6)
-            System.out.println("tienes cero fichitas YEAHHH MANIN YEAHH SISAS +BICI+VIDA");
-          System.out.println("Yeah manin el lado A es: " + humano.mano.verFicha(i).getLadoA() + " el B es: "
-              + humano.mano.verFicha(i).getLadoB() + " tienes: " + humano.mano.manoSize() + " fichas");
-        }*/
+
         //me hace falta que al hacerle click intente jugar la ficha en el tablero
       }
     });
@@ -92,8 +89,11 @@ public class Logica extends Interfaz {
    * 1 es IZQUIERDA
    * 2 es DERECHA
    */
-  public void hacerJugada(Ficha ficha, int lado) {
+  public boolean hacerJugada(Ficha ficha, int lado) {
+    boolean sepuedejugar;
     if (mesa.comprobarJugada(ficha, lado)) {
+      sepuedejugar = true;
+      humano.quitarFicha(ficha);
       System.out.println("Se puede hacer la jugada bajo logica"); // Es para probar el lado derecho
       System.out.println("Comprobando el lado del tablero:  " + mesa.getLado(lado));
       if (lado == 1) { // Si el lado del tablero es a la izquierda
@@ -126,9 +126,11 @@ public class Logica extends Interfaz {
       }
     }
 
-    else
+    else {
       JOptionPane.showMessageDialog(null, "Nea no puedes jugar con esa ficha");
-
+      sepuedejugar = false;
+    }
+    return sepuedejugar;
   }
 
   /** Dibuja las fichas contenidas en un vector del objeto de clase Tablero, esto evitaría que tuviesemos que graficar desde los metods
