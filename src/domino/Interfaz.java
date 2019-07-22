@@ -77,7 +77,7 @@ public class Interfaz extends JFrame {
 
     public JButton crearComponenteMano(Ficha ficha) {
         JButton botonficha = new JButton();
-        botonficha.setIcon(imagenFicha(ficha));
+        botonficha.setIcon(ficha.imagenFicha());
         botonficha.setPreferredSize(tamanoFicha);
         botonficha.setBorder(BorderFactory.createEmptyBorder());
         botonficha.setBackground(Color.BLACK);
@@ -99,14 +99,7 @@ public class Interfaz extends JFrame {
     /** Genera una imagen de la ficha introducida como parámetro, esta imagen ya está escalada y convertida en un
      * ImageIcon para poder setearla como iconImage de las fichas(JButtons)
      */
-    public ImageIcon imagenFicha(Ficha ficha) {
-        Toolkit toolImagen = Toolkit.getDefaultToolkit();
-        String pathficha = Integer.toString(ficha.getLadoA()) + Integer.toString(ficha.getLadoB()) + ".png"; //guarda un string que corresponde al nombre de archivo de la ficha ingresada
-        Image sourceficha = toolImagen.getImage(pathficha); //Crea un objeto Image que obtiene la imagen correspondiente a la ficha
-        sourceficha = sourceficha.getScaledInstance(largoficha, altoficha, Image.SCALE_SMOOTH); //Escala la imagen de ficha a un tamaño deseado.
-        ImageIcon imagenficha = new ImageIcon(sourceficha); // Crea un ImageIcon con la imagen de sourceficha para poder asignarla a los botones*/
-        return imagenficha;
-    }
+    /* D   E   P   R   E   C   A   T   E   D */
 
     /** Grafica las fichas de la mano de un jugador en la zona inferior de la pantalla */
     public void graficarMano(Jugador jugador) {

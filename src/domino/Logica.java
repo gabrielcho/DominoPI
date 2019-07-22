@@ -37,7 +37,7 @@ public class Logica extends Interfaz {
 
   public JButton crearComponenteMano(Ficha ficha) {
     JButton botonficha = new JButton();
-    botonficha.setIcon(imagenFicha(ficha));
+    botonficha.setIcon(ficha.imagenFicha());
     botonficha.setPreferredSize(tamanoFicha);
     botonficha.setBorder(BorderFactory.createEmptyBorder());
     botonficha.setBackground(Color.BLACK);

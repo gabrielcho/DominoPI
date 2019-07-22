@@ -40,7 +40,7 @@ public class Ficha {
     /** Ahora la clase ficha tiene de una la imagen asignada */
     public ImageIcon imagenFicha() {
         Toolkit toolImagen = Toolkit.getDefaultToolkit();
-        String pathficha = Integer.toString(ladoA) + Integer.toString(ladoB) + ".png"; //guarda un string que corresponde al nombre de archivo de la ficha ingresada
+        String pathficha = "src/imagesmelas/" + Integer.toString(ladoA) + Integer.toString(ladoB) + ".png"; //guarda un string que corresponde al nombre de archivo de la ficha ingresada
         Image sourceficha = toolImagen.getImage(pathficha); //Crea un objeto Image que obtiene la imagen correspondiente a la ficha
         sourceficha = sourceficha.getScaledInstance(35, 85, Image.SCALE_SMOOTH); //Escala la imagen de ficha a un tamaño deseado.
         ImageIcon imagenficha = new ImageIcon(sourceficha); // Crea un ImageIcon con la imagen de sourceficha para poder asignarla a los botones
