@@ -25,6 +25,11 @@ public class Interfaz extends JFrame {
     private int largoficha = 35;
     private int altoficha = 85;
     public JPanel areamano;
+    JPanel panel;
+    JPanel areaTablero = new JPanel(new FlowLayout(FlowLayout.CENTER, 0, 0));
+    JPanel areaArriba = new JPanel();
+    Toolkit herramientas = Toolkit.getDefaultToolkit();
+
     /** Objeto Dimension para guardar las dimensiones de la ficha */
     public Dimension tamanoFicha = new Dimension(35, 85);
 
@@ -39,18 +44,11 @@ public class Interfaz extends JFrame {
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        JPanel panel = new JPanel(new BorderLayout());
-        Toolkit herramientas = Toolkit.getDefaultToolkit();
+        panel = new JPanel(new BorderLayout());
 
         Image imagen = herramientas.getImage("06.png");
         imagen = imagen.getScaledInstance(largoficha, altoficha, Image.SCALE_SMOOTH);
-        /* boton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                herramientas.beep();
-            }
-        }); */
-        ////
+
         areamano = new JPanel();
         areamano.setBackground(new Color(34, 82, 30));
         panel.setBackground(new Color(34, 82, 30));
@@ -58,10 +56,7 @@ public class Interfaz extends JFrame {
         setIconImage(imagen);
         panel.add(areamano, BorderLayout.SOUTH);
         setVisible(true);
-        JPanel areaTablero = new JPanel(new FlowLayout(FlowLayout.CENTER, 0, 0));
-        JPanel areaArriba = new JPanel();
-        areaTablero.add(crearComponenteFichaRotada(new Ficha(1, 2), 1));
-        areaTablero.add(crearComponenteFichaRotada(new Ficha(1, 2), 2));
+
         areaArriba.add(crearComponenteFichaRotada(new Ficha(1, 2), 2));
 
         panel.add(areaTablero, BorderLayout.CENTER);
@@ -74,6 +69,11 @@ public class Interfaz extends JFrame {
      *  que tiene asignada una imagen.
      * Se debe poner la ficha y el objeto de tablero al que
      */
+    public void agregarFichaATablero(JButton botonficha) {
+        areaTablero.add(botonficha);
+        areaTablero.revalidate();
+        areaTablero.repaint();
+    }
 
     public JButton crearComponenteMano(Ficha ficha) {
         JButton botonficha = new JButton();
@@ -123,12 +123,13 @@ public class Interfaz extends JFrame {
      * 1 es IZQUIERDA
      * 2 es DERECHA
      */
+
     public RotatedIcon rotarIconoFicha(Ficha ficha, int direccion) { //limpia
         RotatedIcon imagenrotada = null;
         if (direccion == 1) {
-            imagenrotada = new RotatedIcon(ficha.getImagenFicha(), 90);
+            imagenrotada = new RotatedIcon(ficha.getImagenFicha(), -90);
         } else if (direccion == 2) {
-            imagenrotada = new RotatedIcon(ficha.getImagenFicha(), 270);
+            imagenrotada = new RotatedIcon(ficha.getImagenFicha(), 90);
         }
         return imagenrotada;
     }
@@ -149,13 +150,18 @@ public class Interfaz extends JFrame {
         } else if (direccion == 2) {
             ficha.rotarLados();
             ficharotada = new JButton();
-
+            ficha.direccion = 2;
             ficharotada.setIcon(rotarIconoFicha(ficha, direccion));
             ficharotada.setPreferredSize(new Dimension(84, 34));
             ficharotada.setBorder(BorderFactory.createEmptyBorder());
         }
         return ficharotada;
     }
+
+    /** Crea directamente el componente de la ficha puesta en el tablero 
+    public JButton crearComponenteFichaTablero(Ficha ficha) {
+    /////////////////////   ///////////////////   //////////////////
+    }*/
 
     /**Reproduce la música m e l a del juego */
     /*

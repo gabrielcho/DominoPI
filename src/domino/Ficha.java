@@ -17,6 +17,8 @@ public class Ficha {
 
     private int ladoA;
     private int ladoB;
+    public int direccion;
+    /** Denota la dirección de la ficha, puede ser 1: IZQUIERDA o 2: DERECHA*/
 
     private ImageIcon imagenficha;
 
