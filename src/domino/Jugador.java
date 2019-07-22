@@ -25,4 +25,8 @@ public class Jugador {
         dinero += suma;
     }
 
+    public void quitarFicha(Ficha ficha) {
+        mano.borrarFicha(ficha);
+    }
+
 }

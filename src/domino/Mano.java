@@ -30,4 +30,8 @@ public class Mano {
         return mano.size();
     }
 
+    public void borrarFicha(Ficha ficha) {
+        mano.remove(ficha);
+    }
+
 }

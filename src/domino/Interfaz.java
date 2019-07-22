@@ -24,13 +24,12 @@ import javax.swing.JPanel;
 public class Interfaz extends JFrame {
     private int largoficha = 35;
     private int altoficha = 85;
-    private JPanel areamano;
+    public JPanel areamano;
     /** Objeto Dimension para guardar las dimensiones de la ficha */
-    private Dimension tamanoFicha = new Dimension(35, 85);
+    public Dimension tamanoFicha = new Dimension(35, 85);
 
     public Interfaz() {
 
-        setEntorno();
     }
 
     /** Configura el entorno inicial del juego. */
@@ -75,6 +74,7 @@ public class Interfaz extends JFrame {
      *  que tiene asignada una imagen.
      * Se debe poner la ficha y el objeto de tablero al que
      */
+
     public JButton crearComponenteMano(Ficha ficha) {
         JButton botonficha = new JButton();
         botonficha.setIcon(imagenFicha(ficha));
