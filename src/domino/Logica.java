@@ -29,7 +29,6 @@ public class Logica extends Interfaz {
     setEntorno();
     repartirFichas();
     graficarMano(humano);
-    arrayFichasComponentes.add(crearComponenteFichaRotada(mesa.tablero.lastElement(), 1));
     dibujarTablero();
 
   }
@@ -55,11 +54,15 @@ public class Logica extends Interfaz {
         areamano.revalidate();
         areamano.repaint();
         humano.quitarFicha(ficha);
-        hacerJugada(ficha, 1 + JOptionPane.showConfirmDialog(null, "X Q lado quierej jugá?", "yeah manin",
-            JOptionPane.YES_NO_CANCEL_OPTION));
+        if (mesa.tableroSize() == 0)
+          primeraJugada(ficha);
+        else {
+          hacerJugada(ficha, 1 + JOptionPane.showConfirmDialog(null, "X Q lado quierej jugá?", "yeah manin",
+              JOptionPane.YES_NO_CANCEL_OPTION));
+        }
         for (int i = 0; i < mesa.tableroSize(); i++)
           System.out.println("El ladoA es: " + mesa.tablero.get(i).getLadoA() + " El ladoB es: "
-              + mesa.tablero.get(i).getLadoB() + " de la ficha # " + i);
+              + mesa.tablero.get(i).getLadoB() + " de la ficha # " + i + "\n=================================");
         dibujarTablero();
         /* for (int i = 0; i < humano.mano.manoSize(); i++) {
           if (i == 6)
@@ -90,8 +93,9 @@ public class Logica extends Interfaz {
    * 2 es DERECHA
    */
   public void hacerJugada(Ficha ficha, int lado) {
-    System.out.println("Pasa primera prueba"); // Es para probar el lado derecho
     if (mesa.comprobarJugada(ficha, lado)) {
+      System.out.println("Se puede hacer la jugada bajo logica"); // Es para probar el lado derecho
+      System.out.println("Comprobando el lado del tablero:  " + mesa.getLado(lado));
       if (lado == 1) { // Si el lado del tablero es a la izquierda
         if (mesa.getLado(lado) == ficha.getLadoA()) { // Si el lado del la ficha de ese pedazo del tablero es igual a la del lado A
           arrayFichasComponentes.add(0, crearComponenteFichaRotada(ficha, 2));
@@ -104,8 +108,9 @@ public class Logica extends Interfaz {
 
       } else if (lado == 2) {
         System.out.println("Al menos detecta que está en el lado 2");
-        System.out.println("Lado de mesa: " + mesa.getLado(lado) + " Lado A de ficha: " + ficha.getLadoA()
-            + " LadoB de Ficha" + ficha.getLadoB());
+        System.out.println("Lado de mesa: " + mesa.getLado(lado) + " Lado A de ficha: "
+            + mesa.tablero.lastElement().getLadoA() + " LadoB de Ficha" + mesa.tablero.lastElement().getLadoB());
+        System.out.println("Tenemos una ficha cuyo lado A es: " + ficha.getLadoA() + " lado B es: " + ficha.getLadoB());
         if (mesa.getLado(lado) == ficha.getLadoA()) {
           System.out.println("Al menos detecta que está en el lado 22");
           arrayFichasComponentes.addElement(crearComponenteFichaRotada(ficha, 1));
@@ -115,7 +120,9 @@ public class Logica extends Interfaz {
           arrayFichasComponentes.addElement(crearComponenteFichaRotada(ficha, 2));
           mesa.ponerFicha(ficha, lado);
         } else
-          System.out.println("Tencontre bug de mierda");
+          JOptionPane.showMessageDialog(null, "Aparentemente ninguno de los lados de la ficha se puede poner");
+        for (int i = 0; i < mesa.tablero.size(); i++)
+          System.out.print("[" + mesa.tablero.get(i).getLadoA() + "|" + mesa.tablero.get(i).getLadoB() + "]");
       }
     }
 
@@ -128,11 +135,17 @@ public class Logica extends Interfaz {
    * de asignacion de jugada
    */
   public void dibujarTablero() {
+    areaTablero.removeAll();
     for (int i = 0; i < arrayFichasComponentes.size(); i++) {
       agregarFichaATablero(arrayFichasComponentes.elementAt(i));
       areaTablero.revalidate();
       areaTablero.repaint();
     }
+  }
+
+  public void primeraJugada(Ficha ficha) {
+    mesa.tablero.addElement(ficha);
+    arrayFichasComponentes.addElement(crearComponenteFichaRotada(ficha, 1));
   }
 
 }

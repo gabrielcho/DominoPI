@@ -17,7 +17,7 @@ Estoy más cansado que ayer... Maldición.
 
 21/07/19 No avancé casi nada hoy, tuve un problema creando el escucha de las fichas de la mano, duré toda la tarde pensando hasta que al final sólo se resolvió con una simple herencia, me sentí re pendejo pero bueno xd siempre se aprende algo, ahora mi preocupación sigue siendo el tablero, necesito que me muestre qué lado es el que tengo que poner si es que se puede hacer la jugada.
 
-22/07/19 Día final!!! Vamos a ver qué diablos, no creo que pueda terminar pero voy a echarle las re ganas perro... Ya voy a quitar el LoFi y voy a poner S L A Y E R.
+22/07/19 Día final!!! Vamos a ver qué diablos, no creo que pueda terminar pero voy a echarle las re ganas perro... Ya voy a quitar el LoFi y voy a poner S L A Y E R. Después de lograr que se pusieran las fichas, termino con una confusión muy perra causada por el lado derecho, parece como una fuga lógica, pero no he podido diagnosticarla bien, ya descansado pensaré mejor, vamos a ver cómo termina esto ;-; por ahora nada bien
 
 ##### Requerimientos:
 0. B U T I F A R R A

@@ -11,7 +11,7 @@ public class Tablero {
 
     public Tablero() {
         tablero = new Vector<Ficha>();
-        tablero.addElement(new Ficha(1, 3));
+
     }
 
     /** Obtiene el lado mostrado de la ficha jugada al lado izquierdo del tablero*/
@@ -19,7 +19,7 @@ public class Tablero {
         if (lado == 1)
             return tablero.firstElement().getLadoA();
         else if (lado == 2)
-            return tablero.firstElement().getLadoB();
+            return tablero.lastElement().getLadoB();
         else
             return 9999;
     }
@@ -69,12 +69,9 @@ public class Tablero {
                 tablero.add(0, ficha);
             else if (lado == DERECHA)
                 tablero.addElement(ficha);
-            if (lado == 0)
-                tablero.addElement(ficha);
-            else
-                JOptionPane.showMessageDialog(null, "No es una jugada válida!");
 
-        }
+        } else
+            JOptionPane.showMessageDialog(null, "No es una jugada válida!");
 
     }
 
