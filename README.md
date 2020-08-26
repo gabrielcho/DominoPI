@@ -1,3 +1,4 @@
+### SOFTWARE DESARROLLADO EN PERIODO DE APRENDIZAJE
 ## Dominó Programación interactiva
 ###### Tip para el Javadoc
 javadoc *.java -encoding UTF-8 -charset UTF-8 -docencoding UTF-8
